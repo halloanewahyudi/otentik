@@ -136,7 +136,7 @@ function onInit(promise) {
     </div>
     <div v-else>
       <h4 class=" text-center mb-5"> Silakan Scan QRcode anda</h4>
-      <div class="w-52 h-52 rounded-lg relative overflow-hidden mx-auto p-2 bg-white shadow-2xl">
+      <div class="w-60 h-60 rounded-lg relative overflow-hidden mx-auto p-2 bg-white shadow-2xl">
         <qrcode-stream @detect="onDecode" @camera-on="onInit" v-if="!destroyed" class="rounded-lg">
           <div class=" flex flex-col justify-center items-center h-full" v-if="loading">
             <IconLoading class="text-8xl text-green-600" />
