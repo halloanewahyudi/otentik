@@ -15,27 +15,30 @@
 
 import QrCode from '@/components/QrCode.vue';
 import Code from './../assets/codes.json'
+import { getCurrentInstance } from 'vue';
 
-const print = () => {
-  const printContent = document.getElementById('printMe').innerHTML;
-  const style = `
-    <style>
-      ${document.querySelector("style").innerHTML}
-    </style>
-  `;
-  const originalContent = document.body.innerHTML;
 
-  document.body.innerHTML = style + printContent;
-  window.print();
-  document.body.innerHTML = originalContent;
-}
+// Ambil instance komponen saat ini
+const { proxy } = getCurrentInstance();
+
+// Fungsi untuk mencetak
+const print = async () => {
+  try {
+    await proxy.$htmlToPaper('printMe');
+  } catch (error) {
+    console.error('Error printing:', error);
+  }
+};
+
+// Contoh data yang ingin digunakan
+const codeData = Code; // Pastikan ini sesuai dengan struktur data di codes.json
 </script>
 
 <style scoped>
 .print {
     display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2px;
 }
 
 </style>
